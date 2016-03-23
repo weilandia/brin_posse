@@ -22,7 +22,7 @@
       </thead>
 
       <tbody>
-        <% @users.each do |user| %>
+        <% @users.order(ruby_exercisms: :desc).each do |user| %>
           <tr>
             <td><%= user.first_name %></td>
             <td><%= user.email %></td>
