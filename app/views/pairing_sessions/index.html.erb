@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Pairing Sessions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Complete</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pairing_sessions.each do |pairing_session| %>
+      <tr>
+        <td><%= pairing_session.complete %></td>
+        <td><%= link_to 'Show', pairing_session %></td>
+        <td><%= link_to 'Edit', edit_pairing_session_path(pairing_session) %></td>
+        <td><%= link_to 'Destroy', pairing_session, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pairing session', new_pairing_session_path %>

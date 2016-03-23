@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h1><small>welcome 🎉</small></h1>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <%= form_for(@user) do |f| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="field">
+          <%= f.label :fullname %><br>
+          <%= f.text_field :fullname, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br>
+          <%= f.text_field :email, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :github %><br>
+          <%= f.text_field :github, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :cohort %><br>
+          <%= f.text_field :cohort, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :exercisms %><br>
+          <%= f.number_field :exercisms, class:"form-control text-input" %>
+        </div>
+        <br>
+        <%= f.submit "signup", class:"btn btn-primary" %>
+        <%= link_to 'back', users_path, class:"btn btn-primary button_link" %>
+      <% end %>
+    </div>
+  </div>
+</div>

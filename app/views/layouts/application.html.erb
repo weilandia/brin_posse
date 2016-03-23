@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BrinPosse</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% flash.each do |type, message| %>
+    <%= content_tag :div, sanitize(message), class: "alert alert_#{type}" %>
+  <% end %>
+<%= yield %>
+
+</body>
+</html>

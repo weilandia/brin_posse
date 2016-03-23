@@ -1,0 +1,37 @@
+.hero-unit {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height:175px;
+    margin-top: -5px;
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: none;
+      color: #fff;
+    }
+    h1 {
+        color: #fff;
+        font-weight: bold;
+        font-size: 40px;
+        font-weight: 300;
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-top: 60px;
+        margin-bottom: 0;
+    }
+    h2 {
+        font-size: 25px;
+        color: #fff;
+    }
+  }
+
+.signup-hero {
+  background-image: url('https://images.unsplash.com/reserve/iFJ5qQylTD2POC68qBgh_Uluru.jpg?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=3887ea5d9300366efea55a4ef67e6d2f');
+}
+
+.landing-hero {
+  background-image: url('https://images.unsplash.com/photo-1429108003129-39e5380509bc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=2d28de4954ba77712dcdf77c1cdcde0e');
+}
