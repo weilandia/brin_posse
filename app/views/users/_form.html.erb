@@ -1,10 +1,3 @@
-<div class="container">
-  <div class="row text-center">
-    <div class="col-xs-6 col-xs-offset-3">
-      <h1><small>welcome 🎉</small></h1>
-    </div>
-  </div>
-  <br>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
       <%= form_for(@user) do |f| %>
@@ -37,11 +30,19 @@
           <%= f.text_field :cohort, class:"form-control text-input" %>
         </div>
         <div class="field">
-          <%= f.label :exercisms %><br>
-          <%= f.number_field :exercisms, class:"form-control text-input" %>
+          <%= f.label :ruby_exercisms %><br>
+          <%= f.number_field :ruby_exercisms, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :js_exercisms %><br>
+          <%= f.number_field :js_exercisms, class:"form-control text-input" %>
+        </div>
+        <div class="field">
+          <%= f.label :all_exercisms %><br>
+          <%= f.number_field :all_exercisms, class:"form-control text-input" %>
         </div>
         <br>
-        <%= f.submit "signup", class:"btn btn-primary" %>
+        <%= f.submit "submit", class:"btn btn-primary" %>
         <%= link_to 'back', users_path, class:"btn btn-primary button_link" %>
       <% end %>
     </div>

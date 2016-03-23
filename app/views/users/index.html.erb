@@ -13,9 +13,11 @@
           <th>Email</th>
           <th>Github</th>
           <th>Cohort</th>
-          <th>Exercims</th>
-          <th>Exercism count</th>
-          <th colspan="3"></th>
+          <th>Exercims:</th>
+          <th>ruby</th>
+          <th>js</th>
+          <th>all</th>
+          <th colspan="1"></th>
         </tr>
       </thead>
 
@@ -27,8 +29,9 @@
             <td><%= link_to user.github, "http://github.com/#{user.github}" %></td>
             <td><%= user.cohort %></td>
             <td><%= link_to "exercisms", "http://exercism.io/#{user.github}" %></td>
-            <td><%= user.exercisms %></td>
-            <td><%= link_to 'Show', user %></td>
+            <td><%= user.ruby_exercisms %></td>
+            <td><%= user.js_exercisms %></td>
+            <td><%= user.all_exercisms %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
           </tr>
         <% end %>

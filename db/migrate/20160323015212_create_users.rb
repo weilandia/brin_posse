@@ -5,7 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :github
       t.string :cohort
-      t.integer :exercisms
+      t.integer :ruby_exercisms
+      t.integer :js_exercisms
+      t.integer :all_exercisms
 
       t.timestamps null: false
     end

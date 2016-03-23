@@ -20,29 +20,21 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to users_path
     else
-      flash.now[:info] = "ERRRRRROOOORRRRRRRRRRR."
       render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update(user_params)
+      redirect_to users_path
+    else
+      render :edit
     end
   end
 
   def destroy
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to users_url
   end
 
   private
@@ -52,6 +44,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:fullname, :email, :github, :cohort, :exercisms)
+      params.require(:user).permit(:fullname, :email, :github, :cohort, :ruby_exercisms, :js_exercisms, :all_exercisms)
     end
 end
