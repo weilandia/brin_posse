@@ -62,12 +62,12 @@
 
       <tbody>
         <% @mentors.each do |mentor| %>
-          <tr class="<%= shame(user) %>">
-            <td><%= user.first_name %></td>
-            <td><%= user.email %></td>
-            <td><%= link_to user.github, "http://github.com/#{user.github}" %></td>
-            <td><%= user.company%></td>
-            <td><%= user.location %></td>
+          <tr>
+            <td><%= mentor.fullname %></td>
+            <td><%= mentor.email %></td>
+            <td><%= link_to mentor.github, "http://github.com/#{mentor.github}" %></td>
+            <td><%= mentor.company%></td>
+            <td><%= mentor.location %></td>
             <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
           </tr>
         <% end %>

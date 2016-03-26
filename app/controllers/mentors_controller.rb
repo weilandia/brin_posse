@@ -1,4 +1,6 @@
 class MentorsController < ApplicationController
+  before_action :set_mentor, only: [:show, :edit, :update, :destroy]
+
   def show
   end
 
@@ -38,6 +40,6 @@ class MentorsController < ApplicationController
     end
 
     def mentor_params
-      params.require(:mentor).permit(:fullname, :email, :github, :cohort, :ruby_exercisms, :js_exercisms, :all_exercisms)
+      params.require(:mentor).permit(:fullname, :email, :github, :company, :location)
     end
 end
