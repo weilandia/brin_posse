@@ -43,3 +43,39 @@
 <div class="float-center">
   <%= link_to 'new member', new_user_path, class:"btn btn-primary" %>
 </div>
+
+<br>
+<br>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Github</th>
+          <th>Company</th>
+          <th>City</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @mentors.each do |mentor| %>
+          <tr class="<%= shame(user) %>">
+            <td><%= user.first_name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to user.github, "http://github.com/#{user.github}" %></td>
+            <td><%= user.company%></td>
+            <td><%= user.location %></td>
+            <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+</div>
+<div class="float-center">
+  <%= link_to 'new mentor', new_mentor_path, class:"btn btn-primary" %>
+</div>

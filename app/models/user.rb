@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   before_save :build_name
+  has_many :user_roles
+  has_many :roles, through: :user_roles
 
   validates :fullname, presence: true
   validates :email, presence: true, uniqueness: true
