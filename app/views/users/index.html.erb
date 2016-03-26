@@ -13,7 +13,7 @@
           <th>Email</th>
           <th>Github</th>
           <th>Cohort</th>
-          <th>Exercims:</th>
+          <th>Exercisms:</th>
           <th>ruby</th>
           <th>js</th>
           <th>all</th>
@@ -22,7 +22,7 @@
       </thead>
 
       <tbody>
-        <% @users.order(ruby_exercisms: :desc).each do |user| %>
+        <% @users.order(all_exercisms: :desc).each do |user| %>
           <tr class="<%= shame(user) %>">
             <td><%= user.first_name %></td>
             <td><%= user.email %></td>
