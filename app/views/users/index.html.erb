@@ -14,9 +14,9 @@
           <th>Github</th>
           <th>Cohort</th>
           <th>Exercisms</th>
-          <th>ruby</th>
-          <th>js</th>
-          <th>all</th>
+          <th>Ruby</th>
+          <th>JS</th>
+          <th>Total</th>
           <th colspan="1"></th>
         </tr>
       </thead>
@@ -31,7 +31,7 @@
             <td><%= link_to "exercisms", "http://exercism.io/#{user.github}" %></td>
             <td><%= user.ruby_exercisms %></td>
             <td><%= user.js_exercisms %></td>
-            <td><%= user.all_exercisms %></td>
+            <td><%= user.ruby_exercisms + user.js_exercisms %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
           </tr>
         <% end %>

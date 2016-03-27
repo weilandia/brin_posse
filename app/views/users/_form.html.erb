@@ -37,10 +37,6 @@
           <%= f.label :js_exercisms %><br>
           <%= f.number_field :js_exercisms, class:"form-control text-input", required:true %>
         </div>
-        <div class="field">
-          <%= f.label :all_exercisms %><br>
-          <%= f.number_field :all_exercisms, class:"form-control text-input", required:true %>
-        </div>
         <br>
         <%= f.submit "submit", class:"btn btn-primary" %>
         <%= link_to 'back', users_path, class:"btn btn-primary button_link" %>
