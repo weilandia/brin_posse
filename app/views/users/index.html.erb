@@ -6,6 +6,29 @@
 <br>
 <div class="container-fluid">
   <div class="table-responsive">
+    <h4 class="text-center light">Mentors</h4>
+    <table class="table table-hover table-bordered table-striped">
+      <tbody>
+        <% @mentors.each do |mentor| %>
+          <tr>
+            <td><%= mentor.fullname %></td>
+            <td><%= mentor.email %></td>
+            <td><%= link_to mentor.github, "http://github.com/#{mentor.github}" %></td>
+            <td><%= mentor.company%></td>
+            <td><%= mentor.location %></td>
+            <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <br>
+</div>
+<br>
+<br>
+<div class="container-fluid">
+  <h4 class="text-center light">Current Posse Members</h4>
+  <div class="table-responsive">
     <table class="table table-hover table-bordered table-striped">
       <thead>
         <tr>
@@ -42,42 +65,6 @@
 </div>
 <div class="float-center">
   <%= link_to 'new member', new_user_path, class:"btn btn-primary" %>
-</div>
-
-<br>
-<br>
-<div class="container-fluid">
-  <div class="table-responsive">
-    <table class="table table-hover table-bordered table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Github</th>
-          <th>Company</th>
-          <th>City</th>
-          <th colspan="1"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @mentors.each do |mentor| %>
-          <tr>
-            <td><%= mentor.fullname %></td>
-            <td><%= mentor.email %></td>
-            <td><%= link_to mentor.github, "http://github.com/#{mentor.github}" %></td>
-            <td><%= mentor.company%></td>
-            <td><%= mentor.location %></td>
-            <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <br>
-</div>
-<div class="float-center">
-  <%= link_to 'new mentor', new_mentor_path, class:"btn btn-primary" %>
 </div>
 <br>
 <br>
