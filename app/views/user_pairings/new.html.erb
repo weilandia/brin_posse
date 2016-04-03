@@ -1,8 +1,13 @@
 <div class="container">
-  <br/>
-  <%= form_for [@user, @user_pairing] do |f| %>
-  <p>Who did you pair with?</p>
-  <%= f.collection_select(:user_id, @users, :id, :fullname, { include_blank: "Select a user" }) %><br/><br/>
-  <%= f.submit "Create Pairing", class: "btn btn-default"%>
-  <% end %>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <br/>
+      <br/>
+      <%= form_for [@user, @user_pairing] do |f| %>
+      <p class="light">Who did you pair with?</p>
+      <%= f.collection_select(:user_id, @users, :id, :fullname, { include_blank: "Select a user" }, class:"form-control") %><br/>
+      <%= f.submit "Create Pairing", class: "btn btn-primary"%>
+      <% end %>
+    </div>
+  </div>
 </div>
