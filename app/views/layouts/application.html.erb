@@ -11,6 +11,11 @@
   <% flash.each do |type, message| %>
     <%= content_tag :div, sanitize(message), class: "alert alert_#{type}" %>
   <% end %>
+  <div class="hero-unit landing-hero">
+    <div class="container text-center hero-container">
+      <h1><%= link_to "Brin Posse", root_path %></h1>
+    </div>
+  </div>
 <%= yield %>
 
 </body>

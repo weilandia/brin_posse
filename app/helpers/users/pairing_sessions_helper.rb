@@ -1,0 +1,2 @@
+module Users::PairingSessionsHelper
+end

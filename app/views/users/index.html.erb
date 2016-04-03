@@ -1,8 +1,3 @@
-<div class="hero-unit landing-hero">
-  <div class="container text-center hero-container">
-    <h1>Brin Posse</h1>
-  </div>
-</div>
 <br>
 <div class="container-fluid">
   <div class="table-responsive">
@@ -39,13 +34,14 @@
           <th>JS</th>
           <th>Total</th>
           <th colspan="1"></th>
+          <th colspan="1"></th>
         </tr>
       </thead>
 
       <tbody>
         <% @users.order(ruby_exercisms: :desc).each do |user| %>
           <tr class="<%= shame(user) %>">
-            <td><%= user.first_name %></td>
+            <td><%= link_to user.first_name, user_pairing_sessions_path(user) %></td>
             <td><%= user.email %></td>
             <td><%= link_to user.github, "http://github.com/#{user.github}" %></td>
             <td><%= user.cohort %></td>
@@ -54,6 +50,7 @@
             <td><%= user.js_exercisms %></td>
             <td><%= user.ruby_exercisms + user.js_exercisms %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
+            <td><%= link_to 'New Pairing Session', new_user_user_pairing_path(user) %></td>
           </tr>
         <% end %>
       </tbody>
