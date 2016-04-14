@@ -12,6 +12,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'normalize-rails'
 gem 'bcrypt'
+gem 'faraday'
+gem 'resque', "~> 1.22.0"
 gem 'rails_12factor'
 
 
