@@ -5,17 +5,23 @@ class ExercismService
   end
 
   def collect_stats(response)
-    response["statistics"].select do |track|
-      track["language"] == "Ruby" || track["language"] == "JavaScript"
+    if response.keys != ["error"]
+      response["statistics"].select do |track|
+        track["language"] == "Ruby" || track["language"] == "JavaScript"
+      end
     end
   end
 
   def ruby
-    @stats.last["completed"].length
+    if @stats
+      @stats.last["completed"].length
+    end
   end
 
   def js
-    @stats.first["completed"].length
+    if @stats
+      @stats.first["completed"].length
+    end
   end
 
 private

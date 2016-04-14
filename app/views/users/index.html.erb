@@ -1,3 +1,8 @@
+<div class="hero-unit landing-hero">
+  <div class="container text-center hero-container">
+    <h1><%= link_to "Brin Posse", root_path %></h1>
+  </div>
+</div>
 <br>
 <div class="container-fluid">
   <div class="table-responsive">
@@ -48,7 +53,7 @@
             <td><%= link_to "exercisms", "http://exercism.io/#{user.github}" %></td>
             <td><%= user.ruby_exercisms %></td>
             <td><%= user.js_exercisms %></td>
-            <td><%= user.ruby_exercisms + user.js_exercisms %></td>
+            <td><%= user.ruby_exercisms.to_i + user.js_exercisms.to_i %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
             <td><%= link_to 'New Pairing Session', new_user_user_pairing_path(user) %></td>
           </tr>
