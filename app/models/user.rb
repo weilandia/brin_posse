@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
     self.first_name = fullname.split[0]
     self.last_name = fullname.split[1..-1].join(" ")
   end
+
+  def self.api_updates
+    all.each do |user|
+      exercisms = ExercismService.new(user)
+      if user.updates?(exercisms)
+        user.update_attributes(ruby_exercisms: exercisms.ruby, js_exercisms: exercisms.js)
+      end
+    end
+    User.all
+  end
+
+  def updates?(exercisms)
+    exercisms.ruby != ruby_exercisms || exercisms.js != js_exercisms
+  end
 end

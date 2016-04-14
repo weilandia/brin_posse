@@ -29,14 +29,6 @@
           <%= f.label :cohort %><br>
           <%= f.text_field :cohort, class:"form-control text-input", required:true %>
         </div>
-        <div class="field">
-          <%= f.label :ruby_exercisms %><br>
-          <%= f.number_field :ruby_exercisms, class:"form-control text-input", required:true %>
-        </div>
-        <div class="field">
-          <%= f.label :js_exercisms %><br>
-          <%= f.number_field :js_exercisms, class:"form-control text-input", required:true %>
-        </div>
         <br>
         <%= f.submit "submit", class:"btn btn-primary" %>
         <%= link_to 'back', users_path, class:"btn btn-info button_link" %>
