@@ -5,7 +5,6 @@ class ExercismService
   end
 
   def collect_stats(response)
-    require "pry"; binding.pry
     response["statistics"].select do |track|
       track["language"] == "Ruby" || track["language"] == "JavaScript"
     end
