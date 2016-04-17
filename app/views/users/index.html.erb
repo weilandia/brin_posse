@@ -44,7 +44,7 @@
       </thead>
 
       <tbody>
-        <% @users.order(ruby_exercisms: :desc).each do |user| %>
+        <% @users.sort_by(&:total_exercisms).each do |user| %>
           <tr class="<%= shame(user) %>">
             <td><%= link_to user.first_name, user_pairing_sessions_path(user) %></td>
             <td><%= user.email %></td>
@@ -53,7 +53,7 @@
             <td><%= link_to "exercisms", "http://exercism.io/#{user.github}" %></td>
             <td><%= user.ruby_exercisms %></td>
             <td><%= user.js_exercisms %></td>
-            <td><%= user.ruby_exercisms.to_i + user.js_exercisms.to_i %></td>
+            <td><%= user.total_exercisms %></td>
             <td><%= link_to 'Edit', edit_user_path(user) %></td>
             <td><%= link_to 'New Pairing Session', new_user_user_pairing_path(user) %></td>
           </tr>
