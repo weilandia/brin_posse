@@ -5,7 +5,7 @@ class ExercismService
   end
 
   def track_stats(track)
-    @stats["submission_statistics"][track]["total"].to_i if @stats
+    @stats["submission_statistics"][track]["total"].to_i if @stats["submission_statistics"][track]["total"]
   end
 
   def comment_stats
