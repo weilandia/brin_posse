@@ -23,13 +23,13 @@ class User < ActiveRecord::Base
     all.each do |user|
       exercisms = ExercismService.new(user)
       if user.updates?(exercisms)
-        user.update_attributes(ruby_exercisms: exercisms.ruby.to_i, js_exercisms: exercisms.js.to_i)
+        user.update_attributes(ruby_exercisms: exercisms.track_stats("ruby"), js_exercisms: exercisms.track_stats("javascript"))
       end
     end
     User.all
   end
 
   def updates?(exercisms)
-    exercisms.ruby != ruby_exercisms || exercisms.js != js_exercisms
+    exercisms.track_stats("ruby") != ruby_exercisms && exercisms.track_stats("javascript") != js_exercisms
   end
 end

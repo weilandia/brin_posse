@@ -1,27 +1,15 @@
 class ExercismService
   attr_reader :stats
   def initialize(user)
-    @stats ||= collect_stats(parse(Faraday.get("http://exercism.io/api/v1/users/#{user.github}/statistics")))
+    @stats ||= parse(Faraday.get("http://exercism.io/api/v1/users/#{user.github}/statistics"))
   end
 
-  def collect_stats(response)
-    if response.keys != ["error"]
-      response["statistics"].select do |track|
-        track["language"] == "Ruby" || track["language"] == "JavaScript"
-      end
-    end
+  def track_stats(track)
+    @stats["submission_statistics"][track]["total"].to_i if @stats
   end
 
-  def ruby
-    if @stats
-      @stats.last["completed"].length
-    end
-  end
-
-  def js
-    if @stats
-      @stats.first["completed"].length
-    end
+  def comment_stats
+    @stats["comment_statistics"]["total_comments_given_to_others"] if @stats
   end
 
 private
