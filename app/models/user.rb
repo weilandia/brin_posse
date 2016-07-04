@@ -13,17 +13,12 @@ class User < ActiveRecord::Base
   def self.register(user_params)
     user = User.new(user_params)
     user.update_exercism_stats
-    user
   end
 
   def update_exercism_stats
-    begin
-      exercisms = ExercismService.new(self)
-    rescue
-      puts "User does not have an Exercism account."
-    end
+    exercism = ExercismService.new(self)
 
-    if exercisms
+    unless exercism.stats["error"]
       language_stats = exercisms.stats["submission_statistics"].map do |lang|
         [lang[1]["language"], lang[1]["completed"].count]
       end
@@ -31,6 +26,8 @@ class User < ActiveRecord::Base
       language_stats = Hash[*language_stats.flatten]
 
       update_attributes(exercism_stats: language_stats)
+
+      self.save
     end
   end
 

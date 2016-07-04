@@ -1,7 +1,15 @@
 class ExercismService
   attr_reader :stats
   def initialize(user)
-    @stats ||= parse(Faraday.get("http://exercism.io/api/v1/users/#{user.github}/statistics"))
+    begin
+      @stats ||= parse(Faraday.get("http://exercism.io/api/v1/users/#{user.github}/statistics"))
+    rescue
+      @stats = nil
+    end
+  end
+
+  def on_exercism?
+    @stats
   end
 
   def track_stats

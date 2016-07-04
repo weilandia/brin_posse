@@ -18,10 +18,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.register(user_params)
-    if @user.save
+    if @user
       redirect_to users_path
     else
-      render :new
+      render :exercism_new
     end
   end
 
