@@ -10,26 +10,30 @@ class User < ActiveRecord::Base
 
   enum role: %w(default admin)
 
+  def self.register(user_params)
+    user = User.new(user_params)
+    user.update_exercism_stats
+    user
+  end
+
+  def update_exercism_stats
+    exercisms = ExercismService.new(self)
+
+    language_stats = exercisms.stats["submission_statistics"].map do |lang|
+      [lang[1]["language"], lang[1]["completed"].count]
+    end
+
+    language_stats = Hash[*language_stats.flatten]
+
+    update_attributes(exercism_stats: language_stats)
+  end
+
+  def completed_exercism_count
+    exercism_stats.values.map(&:to_i).inject(:+)
+  end
+
   def build_name
     self.first_name = fullname.split[0]
     self.last_name = fullname.split[1..-1].join(" ")
-  end
-
-  def total_exercisms
-    ruby_exercisms.to_i + js_exercisms.to_i
-  end
-
-  def self.api_updates
-    all.each do |user|
-      exercisms = ExercismService.new(user)
-      if user.updates?(exercisms)
-        user.update_attributes(ruby_exercisms: exercisms.track_stats("ruby"), js_exercisms: exercisms.track_stats("javascript"))
-      end
-    end
-    User.all
-  end
-
-  def updates?(exercisms)
-    exercisms.track_stats("ruby") != ruby_exercisms && exercisms.track_stats("javascript") != js_exercisms
   end
 end

@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.api_updates
+    @users = User.all
     @mentors = Mentor.all
   end
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.register(user_params)
     if @user.save
       redirect_to users_path
     else

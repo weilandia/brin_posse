@@ -14,6 +14,7 @@ gem 'normalize-rails'
 gem 'bcrypt'
 gem 'faraday'
 gem 'resque', "~> 1.22.0"
+gem 'sidekiq'
 gem 'rails_12factor'
 
 

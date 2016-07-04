@@ -4,12 +4,12 @@ class ExercismService
     @stats ||= parse(Faraday.get("http://exercism.io/api/v1/users/#{user.github}/statistics"))
   end
 
-  def track_stats(track)
-    @stats["submission_statistics"][track]["total"].to_i if @stats["submission_statistics"][track]["total"]
+  def track_stats
+    @stats["submission_statistics"]
   end
 
   def comment_stats
-    @stats["comment_statistics"]["total_comments_given_to_others"] if @stats
+    @stats["comment_statistics"]
   end
 
 private

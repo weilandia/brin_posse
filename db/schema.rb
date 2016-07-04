@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414013445) do
+ActiveRecord::Schema.define(version: 20160704203940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "mentors", force: :cascade do |t|
     t.string   "fullname"
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160414013445) do
     t.datetime "updated_at",                 null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.hstore   "exercism_stats"
   end
 
   add_foreign_key "user_pairings", "pairing_sessions"
