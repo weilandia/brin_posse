@@ -10,7 +10,7 @@ $(document).ready(function() {
       $parent.siblings('.js').text(data.exercism_stats.JavaScript);
       $parent.siblings('.total').text(data.completed_exercism_count);
 
-      $btn.button('complete').addClass('btn-info');
+      $btn.button('complete').addClass('btn-success');
     });
   });
 });

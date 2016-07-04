@@ -1,8 +1,8 @@
 module UsersHelper
   def shame(user)
-    if user.updated_at < DateTime.now-3.days
+    if user.days_inactive > 5
       return "danger"
-    elsif user.updated_at < DateTime.now-2.days
+    elsif user.days_inactive > 2
       return "warning"
     else
       "success"

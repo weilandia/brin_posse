@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
 
   def self.update_exercism_stats(id)
     user = User.find(id)
+    exercism_count = user.completed_exercism_count
     user.update_exercism_stats
+    user.update_days_inactive(exercism_count)
     user
   end
 
@@ -34,6 +36,14 @@ class User < ActiveRecord::Base
       update_attributes(exercism_stats: language_stats)
 
       self.save
+    end
+  end
+
+  def update_days_inactive(old_total)
+    if old_total < completed_exercism_count
+      update_columns(days_inactive: 0)
+    else
+      update_columns(days_inactive: days_inactive + 1)
     end
   end
 
