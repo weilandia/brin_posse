@@ -15,11 +15,17 @@ class User < ActiveRecord::Base
     user.update_exercism_stats
   end
 
+  def self.update_exercism_stats(id)
+    user = User.find(id)
+    user.update_exercism_stats
+    user
+  end
+
   def update_exercism_stats
     exercism = ExercismService.new(self)
 
     unless exercism.stats["error"]
-      language_stats = exercisms.stats["submission_statistics"].map do |lang|
+      language_stats = exercism.stats["submission_statistics"].map do |lang|
         [lang[1]["language"], lang[1]["completed"].count]
       end
 
