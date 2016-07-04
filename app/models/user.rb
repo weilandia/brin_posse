@@ -17,15 +17,21 @@ class User < ActiveRecord::Base
   end
 
   def update_exercism_stats
-    exercisms = ExercismService.new(self)
-
-    language_stats = exercisms.stats["submission_statistics"].map do |lang|
-      [lang[1]["language"], lang[1]["completed"].count]
+    begin
+      exercisms = ExercismService.new(self)
+    rescue
+      puts "User does not have an Exercism account."
     end
 
-    language_stats = Hash[*language_stats.flatten]
+    if exercisms
+      language_stats = exercisms.stats["submission_statistics"].map do |lang|
+        [lang[1]["language"], lang[1]["completed"].count]
+      end
 
-    update_attributes(exercism_stats: language_stats)
+      language_stats = Hash[*language_stats.flatten]
+
+      update_attributes(exercism_stats: language_stats)
+    end
   end
 
   def completed_exercism_count

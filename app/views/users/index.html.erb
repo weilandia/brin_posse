@@ -44,7 +44,7 @@
       </thead>
 
       <tbody>
-        <% @users.each do |user| %>
+        <% @users.sort_by(&:total_exercisms).reverse!.each do |user| %>
           <tr class="<%= shame(user) %>">
             <td><%= link_to user.first_name, user_pairing_sessions_path(user) %></td>
             <td><%= user.email %></td>
