@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   def self.register(user_params)
     user = User.new(user_params)
-    user.update_exercism_stats   
+    user.update_exercism_stats
   end
 
   def self.update_exercism_stats(id)
